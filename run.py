@@ -1,6 +1,6 @@
 import sys
 import main      # 자동화 실행 파일
-import main2     # 설정창 UI 파일
+import setting     # 설정창 UI 파일
 
 def print_help():
     filename = "run.exe"
@@ -30,7 +30,7 @@ def start():
 
         if arg in ("--setting", "-s", "setting"):
             # 설정 UI 실행
-            main2.SettingsWindow(main.main)
+            setting.SettingsWindow(main.main)
             return
         
         if arg in ("--upload", "-u", "upload"):

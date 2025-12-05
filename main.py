@@ -8,20 +8,13 @@ import win32gui
 import win32con
 import requests
 import tkinter as tk
+import setting
 
 
 SETTING_FILE = "setting.env"
 WINDOW_TITLE_KEYWORD = "BuJa Chart"
 
-def get_base_dir():
-    if getattr(sys, 'frozen', False):   # EXE로 실행되는 경우
-        return os.path.dirname(sys.executable)
-    else:
-        return os.path.dirname(os.path.abspath(__file__))
-
-BASE_DIR = get_base_dir()
-DATA_DIR = os.path.join(BASE_DIR, "data")
-os.makedirs(DATA_DIR, exist_ok=True)
+DATA_DIR = "C:\\bujachart"
 
 # ---------------------------------------------------------
 # DPI 스케일 가져오기
@@ -59,22 +52,6 @@ def get_window_rect(hwnd):
 
 
 # ---------------------------------------------------------
-# 설정파일 생성
-# ---------------------------------------------------------
-def create_default_setting():
-    default = (
-        "COLS=3\n"
-        "ROWS=2\n"
-        "OFFSETX=-60\n"
-        "OFFSETY=150\n"
-        "SERVER_URL=\n"
-        "ITEMS=[\"Gold\", \"CrudeOil\", \"Euro\", \"Silver\", \"SNP\", \"Nasdaq\"]\n"
-    )
-    with open(SETTING_FILE, "w", encoding="utf-8") as f:
-        f.write(default)
-
-
-# ---------------------------------------------------------
 # 설정 파일 로드
 # ---------------------------------------------------------
 def load_settings():
@@ -89,9 +66,21 @@ def load_settings():
     settings["ROWS"] = int(settings["ROWS"])
     settings["OFFSETX"] = int(settings["OFFSETX"])
     settings["OFFSETY"] = int(settings["OFFSETY"])
-    str = settings["SERVER_URL"]
-    settings["SERVER_URL"].translate(str.maketrans('', '', '"\'')).strip()
-    # JSON 형식 파싱
+    settings["X"] = int(settings["X"])
+    settings["Y"] = int(settings["Y"])
+    settings["WIDTH"] = int(settings["WIDTH"])
+    settings["HEIGHT"] = int(settings["HEIGHT"])
+    # PATH 큰따옴표 제거
+    settings["PATH"] = settings["PATH"].translate(str.maketrans('', '', '"\'')).strip()
+
+    if settings["PATH"] == "":
+        settings["PATH"] = DATA_DIR
+
+    
+
+    # SERVER_URL 큰따옴표 제거
+    settings["SERVER_URL"] = settings["SERVER_URL"].translate(str.maketrans('', '', '"\'')).strip()
+    # ITEMS 파싱
     settings["ITEMS"] = json.loads(settings["ITEMS"])
 
     return settings
@@ -134,6 +123,7 @@ class OverlayGUI:
 # 마우스 제어
 # ---------------------------------------------------------
 def do_right_click(x, y):
+    print(f"do_right_click: x={x}, y={y}")
     pyautogui.moveTo(x, y, duration=0.15)
     pyautogui.click(button="right")
     time.sleep(0.25)
@@ -169,7 +159,7 @@ def save_excel(name):
 def main():
     # 설정 파일 없으면 생성 후 종료
     if not os.path.exists(SETTING_FILE):
-        create_default_setting()
+        setting.create_default_setting()
         tk.messagebox.showinfo("설정 생성", "설정파일이 생성되었습니다. (setting.env)")
         return
     
@@ -181,6 +171,14 @@ def main():
     ROWS = cfg["ROWS"]
     OFFSETX = cfg["OFFSETX"]
     OFFSETY = cfg["OFFSETY"]
+    X = cfg["X"]
+    Y = cfg["Y"]
+    WIDTH = cfg["WIDTH"]
+    HEIGHT = cfg["HEIGHT"]
+    PATH = cfg["PATH"]
+    os.makedirs(PATH, exist_ok=True)
+    DATA_DIR = PATH
+
     SERVER_URL = cfg["SERVER_URL"]
     ITEMS = cfg["ITEMS"]
 
@@ -188,8 +186,8 @@ def main():
         tk.messagebox.showerror("오류", "items 개수와 COLS*ROWS가 일치하지 않습니다.")
         return
     
-    clear_xls_files(DATA_DIR)
-    gui.update_log(f"{DATA_DIR} 폴더 엑셀파일 삭제완료...")
+    clear_xls_files(PATH)
+    gui.update_log(f"{PATH} 폴더 엑셀파일 삭제완료...")
 
     # BuJa Chart 창 찾기
     try:
@@ -205,6 +203,7 @@ def main():
     win32gui.SetForegroundWindow(hwnd)
 
     left, top, width, height = get_window_rect(hwnd)
+
     dpi_scale = get_dpi_scale()
 
     
@@ -221,8 +220,8 @@ def main():
 
             item_name = ITEMS[idx]
 
-            click_x = left + ((width / COLS) * (x + 1) + OFFSETX) / dpi_scale
-            click_y = top + ((height / ROWS) * y + OFFSETY) / dpi_scale
+            click_x = left + X + ((WIDTH / COLS) * (x + 1) + OFFSETX) / dpi_scale
+            click_y = top + Y + ((HEIGHT / ROWS) * y + OFFSETY) / dpi_scale
 
             gui.update_log(f"차트 {idx+1} 저장 (x={int(click_x)}, y={int(click_y)})")
 

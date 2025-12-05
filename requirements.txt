@@ -1,4 +1,4 @@
-setuptoolspython 
+setuptools 
 wheel
 pyautogui
 pillow

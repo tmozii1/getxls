@@ -81,4 +81,6 @@ localpycs/
 # Ignore build output folder used by PyInstaller in this repo
 build/
 
+setting.env
+
 # End of .gitignore
