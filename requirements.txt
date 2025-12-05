@@ -1,0 +1,9 @@
+setuptoolspython 
+wheel
+pyautogui
+pillow
+pywin32
+numpy
+requests
+opencv-python
+python-dotenv
