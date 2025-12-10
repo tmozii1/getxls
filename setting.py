@@ -6,8 +6,9 @@ from tkinter import ttk, messagebox
 
 import main
 
-SETTING_FILE = "setting.env"
-
+os.makedirs("dist", exist_ok=True)
+SETTING_DIR = os.path.join(os.path.dirname(__file__), "dist")
+SETTING_FILE = os.path.join(SETTING_DIR, "setting.env")
 
 # ---------------------------------------------------------       
 # setting.env 생성
@@ -22,6 +23,7 @@ def create_default_setting():
         "Y=0\n"
         "WIDTH=1920\n"
         "HEIGHT=960\n"
+        "PATH=\"C:\\\\bujachart\"\n"
         'SERVER_URL="https://buja.tim.pe.kr"\n'
         "ITEMS=[\"Gold\", \"CrudeOil\", \"EuroFX\", \"MiniSP500\", \"AustralianDollar\", \"Silver\", \"NaturalGas\", \"BritishPound\", \"MiniNASDAQ100\", \"NewZealandDollars\", \"Copper\", \"VIX\", \"Corn\", \"MiniDow\", \"CanadianDollar\", \"2YrUSTNote\", \"10YrUSTNote\", \"Soybeans\", \"HangSengIndex\", \"JapaneseYen\", \"5YrUSTNote\", \"30YrUSTBond\", \"BitCoin\", \"Ether\", \"Wheat\"]\n"
     )
