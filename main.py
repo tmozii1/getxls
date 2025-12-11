@@ -6,15 +6,16 @@ import ctypes
 import pyautogui
 import win32gui
 import win32con
-import requests
+import upload
 import tkinter as tk
 import setting
 
 
-SETTING_FILE = "setting.env"
 WINDOW_TITLE_KEYWORD = "BuJa Chart"
 
 DATA_DIR = "C:\\bujachart"
+
+FOR_TEST = True
 
 # ---------------------------------------------------------
 # DPI 스케일 가져오기
@@ -50,42 +51,6 @@ def get_window_rect(hwnd):
     left, top, right, bottom = win32gui.GetWindowRect(hwnd)
     return left, top, right - left, bottom - top
 
-
-# ---------------------------------------------------------
-# 설정 파일 로드
-# ---------------------------------------------------------
-def load_settings():
-    settings = {}
-    with open(SETTING_FILE, "r", encoding="utf-8") as f:
-        for line in f:
-            if "=" in line:
-                key, val = line.strip().split("=", 1)
-                settings[key.strip()] = val.strip()
-
-    settings["COLS"] = int(settings["COLS"])
-    settings["ROWS"] = int(settings["ROWS"])
-    settings["OFFSETX"] = int(settings["OFFSETX"])
-    settings["OFFSETY"] = int(settings["OFFSETY"])
-    settings["X"] = int(settings["X"])
-    settings["Y"] = int(settings["Y"])
-    settings["WIDTH"] = int(settings["WIDTH"])
-    settings["HEIGHT"] = int(settings["HEIGHT"])
-    # PATH 큰따옴표 제거
-    settings["PATH"] = settings["PATH"].translate(str.maketrans('', '', '"\'')).strip()
-
-    if settings["PATH"] == "":
-        settings["PATH"] = DATA_DIR
-
-    
-
-    # SERVER_URL 큰따옴표 제거
-    settings["SERVER_URL"] = settings["SERVER_URL"].translate(str.maketrans('', '', '"\'')).strip()
-    # ITEMS 파싱
-    settings["ITEMS"] = json.loads(settings["ITEMS"])
-
-    return settings
-
-
 # ---------------------------------------------------------
 # 작은 GUI 오버레이
 # ---------------------------------------------------------
@@ -117,6 +82,8 @@ class OverlayGUI:
         self.label.config(text="완료되었습니다.")
         self.btn.config(text="완료", command=self.root.destroy)
         self.root.update()
+
+        self.root.after(1000, self.root.destroy)
 
 
 # ---------------------------------------------------------
@@ -157,15 +124,13 @@ def save_excel(name):
 # 메인 루틴
 # ---------------------------------------------------------
 def main():
-    # 설정 파일 없으면 생성 후 종료
-    if not os.path.exists(SETTING_FILE):
-        setting.create_default_setting()
-        tk.messagebox.showinfo("설정 생성", "설정파일이 생성되었습니다. (setting.env)")
-        return
+
+    if not ctypes.windll.shell32.IsUserAnAdmin():
+        raise Exception("관리자 권한이 아닙니다.")
     
     gui = OverlayGUI()
     # 설정 로드
-    cfg = load_settings()
+    cfg = setting.load_settings()
 
     COLS = cfg["COLS"]
     ROWS = cfg["ROWS"]
@@ -183,20 +148,17 @@ def main():
     ITEMS = cfg["ITEMS"]
 
     if len(ITEMS) != COLS * ROWS:
-        tk.messagebox.showerror("오류", "items 개수와 COLS*ROWS가 일치하지 않습니다.")
-        return
+        raise Exception("items 개수와 COLS*ROWS가 일치하지 않습니다.")
     
-    clear_xls_files(PATH)
-    gui.update_log(f"{PATH} 폴더 엑셀파일 삭제완료...")
+    if not FOR_TEST:
+        clear_xls_files(PATH)
+        gui.update_log(f"{PATH} 폴더 엑셀파일 삭제완료...")
 
     # BuJa Chart 창 찾기
     try:
         hwnd = find_target_window()
     except Exception as e:
-        gui.update_log("BuJa Chart 창을 찾을 수 없습니다.")
-        gui.btn.config(text="종료", command=gui.root.destroy)
-        gui.root.mainloop()
-        return
+        raise Exception("buja chart창을 찾을 수 없습니다.")
 
     # 창을 최상단으로
     win32gui.ShowWindow(hwnd, win32con.SW_RESTORE)
@@ -211,57 +173,31 @@ def main():
 
     time.sleep(2)
 
-    idx = 0
-    for y in range(ROWS):
-        for x in range(COLS):
+    if not FOR_TEST:
+        idx = 0
+        for y in range(ROWS):
+            for x in range(COLS):
 
-            if gui.is_stop:
-                return
+                if gui.is_stop:
+                    return
 
-            item_name = ITEMS[idx]
+                item_name = ITEMS[idx]
 
-            click_x = left + X + ((WIDTH / COLS) * (x + 1) + OFFSETX) / dpi_scale
-            click_y = top + Y + ((HEIGHT / ROWS) * y + OFFSETY) / dpi_scale
+                click_x = left + X + ((WIDTH / COLS) * (x + 1) + OFFSETX) / dpi_scale
+                click_y = top + Y + ((HEIGHT / ROWS) * y + OFFSETY) / dpi_scale
 
-            gui.update_log(f"차트 {idx+1} 저장 (x={int(click_x)}, y={int(click_y)})")
+                gui.update_log(f"차트 {idx+1} 저장 (x={int(click_x)}, y={int(click_y)})")
 
-            do_right_click(click_x, click_y)
-            open_simulation()
-            save_excel(item_name)
-            
-            upload_to_server(item_name, SERVER_URL)
-
-            idx += 1
+                do_right_click(click_x, click_y)
+                open_simulation()
+                save_excel(item_name)
+                upload.upload_to_server(item_name)
+                idx += 1
 
     gui.finish()
     gui.root.mainloop()
 
 
-def normalize_server_url(url: str):
-    url = url.replace('"', '').replace('"', '')
-    url = url.strip().rstrip("/")          # 마지막 / 제거
-    if not url.endswith("/upload"):
-        url = url + "/upload"              # upload 추가
-    return url
-
-def upload_to_server(item_name, server_url):
-    
-    # 서버가 비워져 있으면 전송 안함 
-    if len(server_url) == 0:
-        return
-
-    local_file_path = os.path.join(DATA_DIR, item_name + ".xls")    
-    try: 
-        files = {"file": open(local_file_path, "rb")}
-        url = normalize_server_url(server_url)
-        r = requests.post(url, files=files, timeout=10)
-
-        if r.status_code == 200:
-            print(f"[UPLOAD] 성공 → {local_file_path}")
-        else:
-            print(f"[UPLOAD] 실패 → {r.text}")
-    except Exception as e:
-        print(f"[UPLOAD] 오류: {e}")
 
 
 def clear_xls_files(folder):
@@ -283,26 +219,7 @@ def clear_xls_files(folder):
             except Exception as e:
                 print(f"[삭제 오류] {full_path} → {e}")
 
-def upload():    
-    cfg = load_settings()
-    items = cfg["ITEMS"]
-    server_url = cfg["SERVER_URL"]
-    
-    if len(server_url) == 0:
-        print(f"[UPLOAD] 실패: 서버URL이 없습니다.")
-        return
 
-    
-    
-    for item in items:
-        upload_to_server(item, server_url)
-        
-                
-def test():
-    SERVER_URL = "http://localhost:8000"
-    item_name = "Gold"
-    local_path = os.path.join(DATA_DIR, item_name + ".xls")
-    upload_to_server(local_path, SERVER_URL)
 
 if __name__ == "__main__":
     #clear_xls_files("C:\부자차트")

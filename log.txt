@@ -1,0 +1,351 @@
+=== BuJa Chart Window Found ===
+Title: BuJa Chart
+Control Type: Window
+
+=== Listing child controls ===
+Control Identifiers:
+
+Dialog - 'BuJa Chart'    (L1, T1, R1919, B1039)
+['Dialog', 'BuJa Chart', 'BuJa ChartDialog', 'Dialog0', 'Dialog1']
+child_window(title="BuJa Chart", control_type="Window")
+   | 
+   | Pane - ''    (L619, T314, R1301, B727)
+   | ['Pane', '함 수 명Pane', 'Pane0', 'Pane1', '함 수 명Pane0', '함 수 명Pane1']
+   |    | 
+   |    | Toolbar - ''    (L622, T337, R1296, B360)
+   |    | ['Toolbar함수설명', 'Toolbar암호설정', 'Toolbar수식검증', 'Toolbar', 'Toolbar작업저장', 'Toolbar삭제']
+   |    | child_window(auto_id="59392", control_type="ToolBar")
+   |    |    | 
+   |    |    | Button - ''    (L629, T339, R684, B360)
+   |    |    | ['Button', 'Button0', 'Button1']
+   |    |    | 
+   |    |    | Button - ''    (L684, T339, R775, B360)
+   |    |    | ['Button2']
+   |    |    | 
+   |    |    | Button - '삭제'    (L775, T339, R830, B360)
+   |    |    | ['삭제', 'Button3', '삭제Button']
+   |    |    | child_window(title="삭제", control_type="Button")
+   |    |    | 
+   |    |    | Separator - ''    (L830, T339, R836, B360)
+   |    |    | ['Separator', 'Separator0', 'Separator1']
+   |    |    | 
+   |    |    | Button - ''    (L836, T339, R927, B360)
+   |    |    | ['Button4']
+   |    |    | 
+   |    |    | Button - '작업저장'    (L927, T339, R1006, B360)
+   |    |    | ['Button5', '작업저장Button', '작업저장']
+   |    |    | child_window(title="작업저장", control_type="Button")
+   |    |    | 
+   |    |    | Button - '수식검증'    (L1006, T339, R1085, B360)
+   |    |    | ['수식검증Button', 'Button6', '수식검증']
+   |    |    | child_window(title="수식검증", control_type="Button")
+   |    |    | 
+   |    |    | Separator - ''    (L1085, T339, R1091, B360)
+   |    |    | ['Separator2']
+   |    |    | 
+   |    |    | Button - '함수설명'    (L1091, T339, R1170, B360)
+   |    |    | ['Button7', '함수설명', '함수설명Button']
+   |    |    | child_window(title="함수설명", control_type="Button")
+   |    |    | 
+   |    |    | Button - '암호설정'    (L1170, T339, R1249, B360)
+   |    |    | ['Button8', '암호설정Button', '암호설정']
+   |    |    | child_window(title="암호설정", control_type="Button")
+   |    |    | 
+   |    |    | Button - ''    (L1249, T339, R1304, B360)
+   |    |    | ['Button9']
+   |    | 
+   |    | Static - ''    (L833, T365, R1297, B723)
+   |    | ['Static', '함 수 명Static', 'Static0', 'Static1', '함 수 명Static0', '함 수 명Static1']
+   |    | child_window(auto_id="16135", control_type="Text")
+   |    |    | 
+   |    |    | Static - '함 수 명'    (L845, T380, R891, B392)
+   |    |    | ['함 수 명', 'Static2', '함 수 명Static2']
+   |    |    | child_window(title="함 수 명", control_type="Text")
+   |    |    | 
+   |    |    | Edit - '함 수 명'    (L901, T376, R1284, B397)
+   |    |    | ['Edit', '함 수 명Edit', 'Edit0', 'Edit1', '함 수 명Edit0', '함 수 명Edit1']
+   |    |    | child_window(title="함 수 명", auto_id="16090", control_type="Edit")
+   |    |    | 
+   |    |    | TabControl - 'Tab1'    (L843, T407, R1293, B428)
+   |    |    | ['Tab1', 'Tab1TabControl', 'TabControl']
+   |    |    | child_window(title="Tab1", auto_id="16013", control_type="Tab")
+   |    |    |    | 
+   |    |    |    | TabItem - '수식'    (L845, T409, R893, B429)
+   |    |    |    | ['수식TabItem', 'TabItem', '수식', 'TabItem0', 'TabItem1']
+   |    |    |    | child_window(title="수식", control_type="TabItem")
+   |    |    |    | 
+   |    |    |    | TabItem - '설명'    (L893, T409, R941, B429)
+   |    |    |    | ['TabItem2', '설명', '설명TabItem']
+   |    |    |    | child_window(title="설명", control_type="TabItem")
+   |    |    | 
+   |    |    | Edit - ''    (L854, T440, R1283, B654)
+   |    |    | ['Edit2', '함 수 명Edit2']
+   |    |    | child_window(auto_id="16077", control_type="Edit")
+   |    |    | 
+   |    |    | Pane - ''    (L854, T658, R1283, B678)
+   |    |    | ['Pane2', '함 수 명Pane2']
+   |    |    | child_window(auto_id="350594200", control_type="Pane")
+   |    | 
+   |    | Static - ''    (L623, T365, R830, B698)
+   |    | ['Static3']
+   |    | child_window(auto_id="16098", control_type="Text")
+   |    |    | 
+   |    |    | Button - '기술적지표'    (L627, T369, R826, B387)
+   |    |    | ['기술적지표Button', 'Button10', '기술적지표']
+   |    |    | child_window(title="기술적지표", auto_id="1234", control_type="Button")
+   |    |    | 
+   |    |    | Button - '신호검색'    (L627, T387, R826, B405)
+   |    |    | ['Button11', '신호검색', '신호검색Button']
+   |    |    | child_window(title="신호검색", auto_id="1234", control_type="Button")
+   |    |    | 
+   |    |    | Button - '시스템트레이딩'    (L627, T405, R826, B423)
+   |    |    | ['시스템트레이딩Button', 'Button12', '시스템트레이딩']
+   |    |    | child_window(title="시스템트레이딩", auto_id="1234", control_type="Button")
+   |    |    | 
+   |    |    | Button - '강세약세'    (L627, T423, R826, B441)
+   |    |    | ['강세약세Button', 'Button13', '강세약세']
+   |    |    | child_window(title="강세약세", auto_id="1234", control_type="Button")
+   |    |    | 
+   |    |    | Button - '일반함수'    (L627, T441, R826, B459)
+   |    |    | ['일반함수Button', '일반함수', 'Button14']
+   |    |    | child_window(title="일반함수", auto_id="1234", control_type="Button")
+   |    |    | 
+   |    |    | TreeView - ''    (L627, T459, R826, B694)
+   |    |    | ['TreeView']
+   |    |    | child_window(auto_id="1235", control_type="Tree")
+   |    |    |    | 
+   |    |    |    | TreeItem - '기본함수'    (L648, T461, R700, B479)
+   |    |    |    | ['TreeItem', '기본함수', '기본함수TreeItem', 'TreeItem0', 'TreeItem1']
+   |    |    |    | child_window(title="기본함수", control_type="TreeItem")
+   |    |    |    | 
+   |    |    |    | TreeItem - '사용자함수'    (L648, T479, R712, B497)
+   |    |    |    | ['TreeItem2', '사용자함수TreeItem', '사용자함수']
+   |    |    |    | child_window(title="사용자함수", control_type="TreeItem")
+   |    | 
+   |    | Button - '다른 ID 지표 불러오기'    (L626, T698, R827, B723)
+   |    | ['다른 ID 지표 불러오기', 'Button15', '다른 ID 지표 불러오기Button']
+   |    | child_window(title="다른 ID 지표 불러오기", auto_id="6423", control_type="Button")
+   | 
+   | Pane - '작업 영역'    (L5, T48, R1915, B1035)
+   | ['작업 영역', 'Pane3', '작업 영역Pane']
+   | child_window(title="작업 영역", auto_id="59648", control_type="Pane")
+   |    | 
+   |    | Dialog - '[0603] 해외선옵 종합차트'    (L8, T50, R394, B247)
+   |    | ['Dialog2', '[0603] 해외선옵 종합차트', '[0603] 해외선옵 종합차트Dialog']
+   |    | child_window(title="[0603] 해외선옵 종합차트", auto_id="65280", control_type="Window")
+   |    |    | 
+   |    |    | Pane - ''    (L12, T76, R390, B243)
+   |    |    | ['Pane4']
+   |    |    | child_window(auto_id="59648", control_type="Pane")
+   |    |    |    | 
+   |    |    |    | Pane - ''    (L12, T76, R390, B243)
+   |    |    |    | ['Pane5']
+   |    |    |    | child_window(auto_id="999", control_type="Pane")
+   |    |    |    |    | 
+   |    |    |    |    | Pane - ''    (L12, T76, R390, B243)
+   |    |    |    |    | ['Pane6']
+   |    |    |    |    | child_window(auto_id="2", control_type="Pane")
+   |    |    |    |    |    | 
+   |    |    |    |    |    | Button - ' '    (L168, T78, R183, B88)
+   |    |    |    |    |    | ['Button16', ' Button', ' ', ' Button0', ' Button1', ' 0', ' 1']
+   |    |    |    |    |    | child_window(title=" ", auto_id="2040", control_type="Button")
+   |    |    |    |    |    | 
+   |    |    |    |    |    | Button - ' '    (L168, T88, R183, B98)
+   |    |    |    |    |    | ['Button17', ' Button2', ' 2']
+   |    |    |    |    |    | child_window(title=" ", auto_id="2039", control_type="Button")
+   |    |    |    |    |    | 
+   |    |    |    |    |    | Button - 'P '    (L149, T78, R169, B98)
+   |    |    |    |    |    | ['Button18', 'P ', 'P Button']
+   |    |    |    |    |    | child_window(title="P ", auto_id="2038", control_type="Button")
+   |    |    |    |    |    | 
+   |    |    |    |    |    | Button - '연결'    (L334, T78, R364, B98)
+   |    |    |    |    |    | ['연결Button', 'Button19', '연결']
+   |    |    |    |    |    | child_window(title="연결", auto_id="2037", control_type="Button")
+   |    |    |    |    |    | 
+   |    |    |    |    |    | Button - '초'    (L460, T78, R480, B98)
+   |    |    |    |    |    | ['초Button', 'Button20', '초']
+   |    |    |    |    |    | child_window(title="초", auto_id="2036", control_type="Button")
+   |    |    |    |    |    | 
+   |    |    |    |    |    | Pane - ''    (L841, T78, R925, B98)
+   |    |    |    |    |    | ['Pane7']
+   |    |    |    |    |    | child_window(auto_id="2028", control_type="Pane")
+   |    |    |    |    |    |    | 
+   |    |    |    |    |    |    | Pane - ''    (L842, T79, R924, B97)
+   |    |    |    |    |    |    | ['Pane8']
+   |    |    |    |    |    |    | child_window(auto_id="1000", control_type="Pane")
+   |    |    |    |    |    |    |    | 
+   |    |    |    |    |    |    |    | Edit - ''    (L844, T83, R905, B95)
+   |    |    |    |    |    |    |    | ['Edit3']
+   |    |    |    |    |    |    |    | child_window(auto_id="2001", control_type="Edit")
+   |    |    |    |    |    | 
+   |    |    |    |    |    | Button - ''    (L820, T78, R840, B98)
+   |    |    |    |    |    | ['Button21']
+   |    |    |    |    |    | child_window(auto_id="2027", control_type="Button")
+   |    |    |    |    |    | 
+   |    |    |    |    |    | Button - ''    (L801, T78, R821, B98)
+   |    |    |    |    |    | ['Button22']
+   |    |    |    |    |    | child_window(auto_id="2026", control_type="Button")
+   |    |    |    |    |    | 
+   |    |    |    |    |    | Button - ''    (L782, T78, R802, B98)
+   |    |    |    |    |    | ['Button23']
+   |    |    |    |    |    | child_window(auto_id="2025", control_type="Button")
+   |    |    |    |    |    | 
+   |    |    |    |    |    | Button - ''    (L763, T78, R783, B98)
+   |    |    |    |    |    | ['Button24']
+   |    |    |    |    |    | child_window(auto_id="2024", control_type="Button")
+   |    |    |    |    |    | 
+   |    |    |    |    |    | Pane - '/ '    (L724, T78, R761, B98)
+   |    |    |    |    |    | ['Pane9', '/ ', '/ Pane']
+   |    |    |    |    |    | child_window(title="/ ", auto_id="2023", control_type="Pane")
+   |    |    |    |    |    | 
+   |    |    |    |    |    | Edit - ''    (L694, T78, R724, B98)
+   |    |    |    |    |    | ['Edit4']
+   |    |    |    |    |    | child_window(auto_id="2022", control_type="Edit")
+   |    |    |    |    |    | 
+   |    |    |    |    |    | Button - ''    (L678, T78, R693, B98)
+   |    |    |    |    |    | ['Button25']
+   |    |    |    |    |    | child_window(auto_id="2021", control_type="Button")
+   |    |    |    |    |    | 
+   |    |    |    |    |    | Edit - ''    (L654, T78, R679, B98)
+   |    |    |    |    |    | ['Edit5']
+   |    |    |    |    |    | child_window(auto_id="2020", control_type="Edit")
+   |    |    |    |    |    | 
+   |    |    |    |    |    | Button - '120'    (L633, T78, R653, B98)
+   |    |    |    |    |    | ['120', 'Button26', '120Button']
+   |    |    |    |    |    | child_window(title="120", auto_id="2019", control_type="Button")
+   |    |    |    |    |    | 
+   |    |    |    |    |    | Button - '60'    (L614, T78, R634, B98)
+   |    |    |    |    |    | ['Button27', '60', '60Button']
+   |    |    |    |    |    | child_window(title="60", auto_id="2018", control_type="Button")
+   |    |    |    |    |    | 
+   |    |    |    |    |    | Button - '30'    (L595, T78, R615, B98)
+   |    |    |    |    |    | ['Button28', '30Button', '30']
+   |    |    |    |    |    | child_window(title="30", auto_id="2017", control_type="Button")
+   |    |    |    |    |    | 
+   |    |    |    |    |    | Button - '20'    (L576, T78, R596, B98)
+   |    |    |    |    |    | ['20', '20Button', 'Button29']
+   |    |    |    |    |    | child_window(title="20", auto_id="2016", control_type="Button")
+   |    |    |    |    |    | 
+   |    |    |    |    |    | Button - '10'    (L557, T78, R577, B98)
+   |    |    |    |    |    | ['10Button', 'Button30', '10']
+   |    |    |    |    |    | child_window(title="10", auto_id="2015", control_type="Button")
+   |    |    |    |    |    | 
+   |    |    |    |    |    | Button - '5'    (L538, T78, R558, B98)
+   |    |    |    |    |    | ['5', 'Button31', '5Button']
+   |    |    |    |    |    | child_window(title="5", auto_id="2014", control_type="Button")
+   |    |    |    |    |    | 
+   |    |    |    |    |    | Button - '3'    (L519, T78, R539, B98)
+   |    |    |    |    |    | ['Button32', '3Button', '3']
+   |    |    |    |    |    | child_window(title="3", auto_id="2013", control_type="Button")
+   |    |    |    |    |    | 
+   |    |    |    |    |    | Button - '1'    (L500, T78, R520, B98)
+   |    |    |    |    |    | ['1Button', 'Button33', '1']
+   |    |    |    |    |    | child_window(title="1", auto_id="2012", control_type="Button")
+   |    |    |    |    |    | 
+   |    |    |    |    |    | Button - '년'    (L420, T78, R440, B98)
+   |    |    |    |    |    | ['년', '년Button', 'Button34']
+   |    |    |    |    |    | child_window(title="년", auto_id="2011", control_type="Button")
+   |    |    |    |    |    | 
+   |    |    |    |    |    | Button - '월'    (L401, T78, R421, B98)
+   |    |    |    |    |    | ['월Button', '월', 'Button35']
+   |    |    |    |    |    | child_window(title="월", auto_id="2010", control_type="Button")
+   |    |    |    |    |    | 
+   |    |    |    |    |    | Button - '주'    (L382, T78, R402, B98)
+   |    |    |    |    |    | ['주Button', 'Button36', '주']
+   |    |    |    |    |    | child_window(title="주", auto_id="2009", control_type="Button")
+   |    |    |    |    |    | 
+   |    |    |    |    |    | Button - '일'    (L363, T78, R383, B98)
+   |    |    |    |    |    | ['일Button', '일', 'Button37']
+   |    |    |    |    |    | child_window(title="일", auto_id="2008", control_type="Button")
+   |    |    |    |    |    | 
+   |    |    |    |    |    | Button - '분'    (L441, T78, R461, B98)
+   |    |    |    |    |    | ['Button38', '분', '분Button']
+   |    |    |    |    |    | child_window(title="분", auto_id="2007", control_type="Button")
+   |    |    |    |    |    | 
+   |    |    |    |    |    | Button - '틱'    (L479, T78, R499, B98)
+   |    |    |    |    |    | ['틱Button', '틱', 'Button39']
+   |    |    |    |    |    | child_window(title="틱", auto_id="2006", control_type="Button")
+   |    |    |    |    |    | 
+   |    |    |    |    |    | Pane - 'Canadian Dollar(25.12)'    (L211, T78, R333, B98)
+   |    |    |    |    |    | ['Canadian Dollar(25.12)', 'Canadian Dollar(25.12)Pane', 'Pane10']
+   |    |    |    |    |    | child_window(title="Canadian Dollar(25.12)", auto_id="2005", control_type="Pane")
+   |    |    |    |    |    | 
+   |    |    |    |    |    | Pane - ''    (L182, T78, R210, B98)
+   |    |    |    |    |    | ['Pane11']
+   |    |    |    |    |    | child_window(auto_id="2004", control_type="Pane")
+   |    |    |    |    |    | 
+   |    |    |    |    |    | Pane - ''    (L56, T78, R149, B98)
+   |    |    |    |    |    | ['Pane12']
+   |    |    |    |    |    | child_window(auto_id="2003", control_type="Pane")
+   |    |    |    |    |    |    | 
+   |    |    |    |    |    |    | Edit - ''    (L58, T80, R116, B96)
+   |    |    |    |    |    |    | ['Edit6']
+   |    |    |    |    |    |    | child_window(auto_id="1", control_type="Edit")
+   |    |    |    |    |    | 
+   |    |    |    |    |    | Button - '전'    (L35, T78, R55, B98)
+   |    |    |    |    |    | ['Button40', '전', '전Button']
+   |    |    |    |    |    | child_window(title="전", auto_id="2002", control_type="Button")
+   |    |    |    |    |    | 
+   |    |    |    |    |    | Button - ''    (L14, T78, R34, B98)
+   |    |    |    |    |    | ['Button41']
+   |    |    |    |    |    | child_window(auto_id="2000", control_type="Button")
+   |    |    |    |    |    | 
+   |    |    |    |    |    | Pane - ''    (L15, T103, R388, B241)
+   |    |    |    |    |    | ['Pane13']
+   |    |    |    |    |    | child_window(auto_id="2", control_type="Pane")
+   |    |    |    |    |    |    | 
+   |    |    |    |    |    |    | Pane - ''    (L15, T103, R388, B241)
+   |    |    |    |    |    |    | ['Pane14']
+   |    |    |    |    |    |    | child_window(auto_id="1100", control_type="Pane")
+   |    |    |    |    |    |    |    | 
+   |    |    |    |    |    |    |    | Pane - ''    (L303, T224, R388, B241)
+   |    |    |    |    |    |    |    | ['Pane15']
+   |    |    |    |    |    |    |    | child_window(auto_id="1400", control_type="Pane")
+   |    |    |    |    |    |    |    | 
+   |    |    |    |    |    |    |    | ScrollBar - ''    (L15, T224, R223, B241)
+   |    |    |    |    |    |    |    | ['ScrollBar']
+   |    |    |    |    |    |    |    | child_window(auto_id="1300", control_type="ScrollBar")
+   |    |    |    |    |    |    |    |    | 
+   |    |    |    |    |    |    |    |    | Button - '왼쪽 스크롤 화살표'    (L15, T224, R32, B241)
+   |    |    |    |    |    |    |    |    | ['왼쪽 스크롤 화살표Button', 'Button42', '왼쪽 스크롤 화살표']
+   |    |    |    |    |    |    |    |    | child_window(title="왼쪽 스크롤 화살표", auto_id="UpButton", control_type="Button")
+   |    |    |    |    |    |    |    |    | 
+   |    |    |    |    |    |    |    |    | Button - '페이지 왼쪽으로'    (L32, T224, R145, B241)
+   |    |    |    |    |    |    |    |    | ['페이지 왼쪽으로', '페이지 왼쪽으로Button', 'Button43', '페이지 왼쪽으로0', '페이지 왼쪽으로1', '페이지 왼쪽으로Button0', '페이지 왼쪽으로Button1']
+   |    |    |    |    |    |    |    |    | child_window(title="페이지 왼쪽으로", auto_id="UpPageButton", control_type="Button")
+   |    |    |    |    |    |    |    |    | 
+   |    |    |    |    |    |    |    |    | Thumb - '위치'    (L145, T224, R155, B241)
+   |    |    |    |    |    |    |    |    | ['Thumb', '위치', '위치Thumb', 'Thumb0', 'Thumb1', '위치0', '위치1', '위치Thumb0', '위치Thumb1']
+   |    |    |    |    |    |    |    |    | child_window(title="위치", auto_id="ScrollbarThumb", control_type="Thumb")
+   |    |    |    |    |    |    |    |    | 
+   |    |    |    |    |    |    |    |    | Button - '오른쪽 스크롤 화살표'    (L155, T224, R172, B241)
+   |    |    |    |    |    |    |    |    | ['오른쪽 스크롤 화살표Button', 'Button44', '오른쪽 스크롤 화살표']
+   |    |    |    |    |    |    |    |    | child_window(title="오른쪽 스크롤 화살표", auto_id="DownButton", control_type="Button")
+   |    |    |    |    |    |    |    | 
+   |    |    |    |    |    |    |    | Slider - ''    (L223, T224, R303, B241)
+   |    |    |    |    |    |    |    | ['Slider']
+   |    |    |    |    |    |    |    | child_window(auto_id="1600", control_type="Slider")
+   |    |    |    |    |    |    |    |    | 
+   |    |    |    |    |    |    |    |    | Button - '페이지 왼쪽으로'    (L228, T228, R233, B232)
+   |    |    |    |    |    |    |    |    | ['페이지 왼쪽으로2', '페이지 왼쪽으로Button2', 'Button45']
+   |    |    |    |    |    |    |    |    | child_window(title="페이지 왼쪽으로", control_type="Button")
+   |    |    |    |    |    |    |    |    | 
+   |    |    |    |    |    |    |    |    | Thumb - '위치'    (L233, T226, R238, B237)
+   |    |    |    |    |    |    |    |    | ['Thumb2', '위치2', '위치Thumb2']
+   |    |    |    |    |    |    |    |    | child_window(title="위치", control_type="Thumb")
+   |    |    |    |    |    |    |    |    | 
+   |    |    |    |    |    |    |    |    | Button - '페이지 오른쪽으로'    (L238, T228, R298, B232)
+   |    |    |    |    |    |    |    |    | ['Button46', '페이지 오른쪽으로', '페이지 오른쪽으로Button']
+   |    |    |    |    |    |    |    |    | child_window(title="페이지 오른쪽으로", control_type="Button")
+   |    |    |    |    |    |    |    | 
+   |    |    |    |    |    |    |    | Pane - ''    (L15, T103, R388, B224)
+   |    |    |    |    |    |    |    | ['Pane16']
+   |    |    |    |    |    |    |    | child_window(auto_id="1500", control_type="Pane")
+   | 
+   | Pane - ''    (L5, T26, R1915, B48)
+   | ['Pane17']
+   | child_window(auto_id="59396", control_type="Pane")
+   |    | 
+   |    | Pane - ''    (L5, T27, R1915, B47)
+   |    | ['Pane18']
+   |    | child_window(auto_id="20", control_type="Pane")

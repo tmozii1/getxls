@@ -1,6 +1,7 @@
 import os
 import json
 import re
+import pyautogui
 import tkinter as tk
 from tkinter import ttk, messagebox
 
@@ -101,8 +102,7 @@ def save_settings(COLS, ROWS, OFFSETX, OFFSETY, X, Y, WIDTH, HEIGHT, PATH, SERVE
 # 설정 UI 클래스
 # ---------------------------------------------------------
 class SettingsWindow:
-    def __init__(self, start_callback):
-        self.start_callback = start_callback
+    def __init__(self):
         self.cfg = load_settings()
 
         # ---------------------------------------------------------
@@ -257,6 +257,8 @@ class SettingsWindow:
         #self.start_callback()
 
 
+def main():
+    SettingsWindow()
 
 # ---------------------------------------------------------
 # 사용 예시
@@ -265,4 +267,4 @@ if __name__ == "__main__":
     def fake_start():
         print("자동작업 시작!")
 
-    SettingsWindow(main.main)
+    main()

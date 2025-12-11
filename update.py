@@ -3,7 +3,8 @@ from pywinauto.keyboard import send_keys
 import time
 import requests
 import pyperclip
-
+import pyautogui
+import tkinter as tk
 
 # =========================================================
 # 0) 사용자 입력
@@ -117,7 +118,7 @@ def update_formula(main, func_name: str, formula_text: str):
 # =========================================================
 # 4) 메인 실행
 # =========================================================
-def main_run():
+def main():
     print("=== Connecting to BuJa Chart ===")
     main = Desktop(backend="uia").window(title_re=".*BuJa Chart.*")
     main.set_focus()
@@ -134,8 +135,19 @@ def main_run():
 
         update_formula(main, func_name, text)
 
-    print("\n=== 전체 작업 완료 ===")
+    # 닫기버튼
+    # ToolBar 컨트롤 찾기
+    toolbar = main.child_window(auto_id="59392", control_type="ToolBar")
 
+    # 자식 버튼 나열
+    buttons = toolbar.children()
+
+    # 마지막 버튼이 닫기 버튼(Button9)
+    close_btn = buttons[-1]   # 버튼 리스트의 마지막 항목
+    close_btn.click_input()
+
+    print("\n=== 전체 작업 완료 ===")
+    tk.messagebox.showinfo("일일업데이트", "일일업데이트 완료")
 
 if __name__ == "__main__":
-    main_run()
+    main()

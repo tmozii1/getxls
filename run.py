@@ -1,42 +1,47 @@
 import sys
-import subprocess
+
 import time
 import os
 from pywinauto.application import Application
 
-
-# -------------------------------
-# 공통 실행 함수
-# -------------------------------
-def run_python(script):
-    """스크립트 실행 후 종료까지 대기"""
-    print(f"[실행] {script}")
-    proc = subprocess.Popen(["python", script])
-    proc.wait()
-    print(f"[완료] {script}\n")
+import main
+import upload
+import update
+import setting
+import openmenu
 
 
 # -------------------------------
 # main 단계: XLS 생성
 # -------------------------------
 def run_getxls():
-    run_python("main.py")
+    try:
+        main.main()
+    except Exception as e:
+        print(f"[getxls] 오류: {e}")
+        sys.exit(1)
 
 
 # -------------------------------
 # 업로드 단계
 # -------------------------------
 def run_upload():
-    run_python("upload.py")   # 팀장님 환경에 따라 파일명 조정 가능
-    # 또는 main.py 내부 upload 함수만 따로 만든 경우 아래로 교체:
-    # run_python("main.py --upload")
+    try:
+        upload.main()
+    except Exception as e:
+        print(f"[upload] 오류: {e}")
+        sys.exit(1)
 
 
 # -------------------------------
 # openmenu 단계: 수식관리자 열기
 # -------------------------------
 def run_openmenu():
-    run_python("openmenu.py")
+    try:
+        openmenu.main()
+    except Exception as e:
+        print(f"[openmenu] 오류: {e}")
+        sys.exit(1)
 
 
 # -------------------------------
@@ -65,32 +70,23 @@ def wait_formula_window(timeout=15):
 # update 단계
 # -------------------------------
 def run_update():
-    if not wait_formula_window():
-        print("수식관리자 창이 없어 update.py 실행 불가.")
-        return
-    run_python("update.py")
+    try:
+        update.main()
+    except Exception as e:
+        print(f"[update] 오류: {e}")
+        sys.exit(1)
 
 
 # -------------------------------
 # 설정파일 생성
 # -------------------------------
 def run_setting():
-    print("[설정파일 생성]")
-    dist = "dist"
-    env_path = os.path.join(dist, "setting.env")
+    try:
+        setting.main()
+    except Exception as e:
+        print(f"[setting] 오류: {e}")
+        sys.exit(1)
 
-    if not os.path.exists(dist):
-        os.makedirs(dist)
-        print("dist 폴더 생성됨.")
-
-    if not os.path.exists(env_path):
-        with open(env_path, "w", encoding="utf-8") as f:
-            f.write("# setting.env 자동 생성됨\n")
-            f.write("COLS=5\nROWS=5\nOFFSETX=-60\nOFFSETY=150\nX=0\nY=0\n")
-        print("setting.env 생성 완료.")
-    else:
-        print("이미 setting.env 존재함. 생성 스킵.")
-    print()
 
 
 # -------------------------------
@@ -121,7 +117,7 @@ if __name__ == "__main__":
         # 전체 자동 실행
         print("[전체 자동 실행: getxls → upload → auto]")
         run_getxls()
-        run_upload()
+        #run_upload()
         run_openmenu()
         run_update()
         sys.exit(0)
