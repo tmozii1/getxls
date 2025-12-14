@@ -13,9 +13,9 @@ def upload_to_server(item_name):
     cfg = setting.load_settings()
     server_url = cfg["SERVER_URL"]
     data_dir = cfg.get("PATH", "C:\\bujachart")
-    upload_to_server(item_name, server_url, data_dir)
+    upload_to_server2(item_name, server_url, data_dir)
 
-def upload_to_server(item_name, server_url, data_dir):
+def upload_to_server2(item_name, server_url, data_dir):
     
     # 서버가 비워져 있으면 전송 안함 
     if len(server_url) == 0:

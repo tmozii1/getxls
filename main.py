@@ -15,7 +15,7 @@ WINDOW_TITLE_KEYWORD = "BuJa Chart"
 
 DATA_DIR = "C:\\bujachart"
 
-FOR_TEST = True
+FOR_TEST = False
 
 # ---------------------------------------------------------
 # DPI 스케일 가져오기

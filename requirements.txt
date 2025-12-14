@@ -1,6 +1,7 @@
 setuptools 
 wheel
 pyautogui
+pywinauto
 pillow
 pywin32
 numpy
