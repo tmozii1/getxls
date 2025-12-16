@@ -9,7 +9,7 @@ import upload
 import update
 import setting
 import openmenu
-
+import startapp
 
 # -------------------------------
 # main 단계: XLS 생성
@@ -32,6 +32,15 @@ def run_upload():
         print(f"[upload] 오류: {e}")
         sys.exit(1)
 
+# -------------------------------
+# startapp 단계: 앱 실행
+# -------------------------------
+def run_startapp():
+    try:
+        startapp.main()
+    except Exception as e:
+        print(f"[startapp] 오류: {e}")
+        sys.exit(1)
 
 # -------------------------------
 # openmenu 단계: 수식관리자 열기
@@ -42,6 +51,8 @@ def run_openmenu():
     except Exception as e:
         print(f"[openmenu] 오류: {e}")
         sys.exit(1)
+
+
 
 
 # -------------------------------
@@ -114,7 +125,7 @@ if __name__ == "__main__":
     args = sys.argv[1:]
 
     if not args:
-        # 전체 자동 실행
+        # 전체 자동 실행 
         print("[전체 자동 실행: getxls → upload → auto]")
         run_getxls()
         #run_upload()
@@ -127,6 +138,8 @@ if __name__ == "__main__":
 
     if cmd == "--help":
         print(HELP_TEXT)
+    elif cmd == "--start":
+        run_startapp()
     elif cmd == "--setting":
         run_setting()
     elif cmd == "--getxls":
